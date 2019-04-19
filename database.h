@@ -13,10 +13,9 @@
 class Database {
 public:
 	void Add(const Date& date, const string& event);
-	int RemoveIf
-	(const function<bool(const Date& date, const string& event)>& predicate);
+	int RemoveIf(const function<bool(const Date& date, const string& event)>& predicate);
 	vector<pair<Date, string>> FindIf
-	(const function<bool(const Date& date, const string& event)>& predicate) const;
+		(const function<bool(const Date& date, const string& event)>& predicate) const;
 	void Print(ostream& os) const;
 	pair<Date, string> Last(const Date& date) const;
 private:
