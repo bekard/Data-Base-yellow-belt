@@ -1,4 +1,4 @@
-# Data-Base-yellow-belt-
+# Data Base (yellow belt)
 Database that works with pairs (date, event).
 
 ## A set of commands to work with the database
