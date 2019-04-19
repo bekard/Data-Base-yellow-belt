@@ -10,24 +10,6 @@ void Database::Add(const Date& date, const string& event) {
 
 int Database::RemoveIf
 (const function<bool(const Date& date, const string& event)>& predicate) {
-	/*map<Date, vector<string>> new_base;
-	int erased = 0;
-
-	for (const auto& by_day : base) {
-		for (const auto& one_event : by_day.second) {
-			if (!predicate(by_day.first, one_event)) {
-				new_base[by_day.first].push_back(one_event);
-			}
-			else if (sorted_base[by_day.first].count(one_event) > 0){
-				++erased;
-				sorted_base[by_day.first].erase(one_event);
-			}
-		}
-	}
-	base = new_base;
-	return erased;*/
-
-//------------------------------------------------------------------------------------
 	map<Date, vector<string>> clone = base;
 	int erased = 0;
 	for (auto d : clone) {
@@ -73,11 +55,6 @@ void Database::Print(ostream& os) const {
 pair<Date, string> Database::Last(const Date& date) const {
 	if (base.empty() || date < base.begin()->first) throw invalid_argument("");
 	auto up = base.upper_bound(date);
-	//while (up != base.begin()) {
-	//	--up; // was: --
-	//	if (!up->second.empty()) break;
-	//}
-	//if (up == base.begin() && base.begin()->second.empty()) throw invalid_argument("");
 	--up;
 	return make_pair(up->first, *up->second.rbegin());
 }
